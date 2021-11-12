@@ -22,28 +22,28 @@ In order to receive points, you will have to do the
 These points will be attributed manually if you do not manage to have your contract interact with the evaluator, or automatically in the first question.
 
 ### ERC20 basics
-- Call getTickerAndSupply() in the evaluator contract to receive a random ticker for your ERC20 token, as well as an initial token supply (1 pt)
+- Call ex1_getTickerAndSupply() in the evaluator contract to receive a random ticker for your ERC20 token, as well as an initial token supply (1 pt)
 - Create an ERC20 token contract with the proper ticker and supply (2 pt)
 - Deploy it to the Rinkeby testnet (2 pts)
-- Call testErc20TickerAndSupply() in the evaluator to receive your points (all remaining 7 points are attributed at that step)
+- Call ex2_testErc20TickerAndSupply() in the evaluator to receive your points (all remaining 7 points are attributed at that step)
 
 ### Distributing and selling tokens
-- Create a getToken() function that distributes token to the caller (2 pts)
-- Create a buyToken() function that lets the caller send an arbitrary amount of ETH, and distributes a proportionate amount of token (2 pts)
+- Create a ex3_testGetToken() function that distributes token to the caller (2 pts)
+- Create a ex4_testBuyToken() function that lets the caller send an arbitrary amount of ETH, and distributes a proportionate amount of token (2 pts)
 
 ### Creating an ICO allow list
 - Create a customer allow listing function. Only allow listed users should be able to call getToken()
-- Call testDenyListing() in the evaluator to show he can't buy tokens using buyTokens() (1 pt)
+- Call ex5_testDenyListing() in the evaluator to show he can't buy tokens using buyTokens() (1 pt)
 - Allow the evaluator to buy tokens
-- Call testAllowListing()in the evaluator to show he can now buy tokens buyTokens() (2 pt)
+- Call ex6_testAllowListing()in the evaluator to show he can now buy tokens buyTokens() (2 pt)
 
 ### Creating multi tier allow list
 - Create a customer multi tier listing function. Only allow listed users should be able to call buyToken(); and customers should receive a different amount of token based on their level
-- Call testDenyTier() in the evaluator to show he can't buy tokens using buyTokens() (1 pt)
+- Call ex7_testDenyListing() in the evaluator to show he can't buy tokens using buyTokens() (1 pt)
 - Add the evaluator in the first tier. He should now be able to buy N tokens for Y amount of ETH
-- Call testTier1()in the evaluator to show he can now buy tokens(2 pt)
+- Call ex8_testTier1Listing()in the evaluator to show he can now buy tokens(2 pt)
 - Add the evaluator in the second tier. He should now be able to buy 2N tokens for Y amount of ETH 
-- Call testTier2()in the evaluator to show he can now buy more tokens(2 pt)
+- Call ex9_testTier2Listing()in the evaluator to show he can now buy more tokens(2 pt)
 
 ### Extra points
 Extra points if you find bugs / corrections this TD benefit from, and submit a PR to make it better.  

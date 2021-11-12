@@ -11,4 +11,6 @@ interface IExerciceSolution is IERC20
   function buyToken() external payable returns (bool);
 
   function isCustomerWhiteListed(address customerAddress) external returns (bool);
+
+  function customerTierLevel(address customerAddress) external returns (uint256);
 }
