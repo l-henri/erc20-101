@@ -51,6 +51,7 @@ These points will be attributed manually if you do not manage to have your contr
 ### Extra points
 Extra points if you find bugs / corrections this TD can benefit from, and submit a PR to make it better.  Ideas:
 - Adding a way to check the code of a specific contract was only used once (no copying) 
+- Publish the code of the Evaluator on Etherscan using the "Verify and publish" functionnality 
 
 ## TD addresses
 - Points contracts `0x160cFE6D64EC2036C49839395BdBD6b576973840`
