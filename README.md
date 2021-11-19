@@ -5,6 +5,7 @@ Welcome! This is an automated workshop that will explain how to deploy and ERC20
 It is aimed at developpers that have never written code in Solidity, but who understand its syntax.
 
 ## How to work on this TD
+### Introduction
 The TD has two components:
 - An ERC20 token, ticker TD-ERC20-101, that is used to keep track of points 
 - An evaluator contract, that is able to mint and distribute TD-ERC20-101 points
@@ -16,6 +17,20 @@ Your objective is to gather as many TD-ERC20-101 points as possible. Please note
 - This repo contains an interface `IExerciceSolution.sol`. Your ERC20 contract will have to conform to this interface in order to validate the exercice; that is, your contract needs to implement all the functions described in `IExerciceSolution.sol`. 
 - A high level description of what is expected for each exercice is in this readme. A low level description of what is expected can be inferred by reading the code in `Evaluator.sol`.
 - The Evaluator contract sometimes needs to make payments to buy your tokens. Make sure he has enough ETH to do so! If not, you can send ETH directly to the contract.
+
+### Getting to work
+- Clone the repo on your machine
+- Install the required packages `npm install @openzeppelin/contracts@3.4.1` and `npm install @truffle/hdwallet-provider`
+- Copy the content of `example-truffle-config.js` to your truffle config
+- Configure a seed for deployment of contracts in your truffle config
+- Register for an infura key and set it up in your truffle config
+- Download and launch Ganache
+- Test that you are able to connect to the rinkeby network with `truffle console`
+- Test that you are able to connect to the rinkeby network with `truffle console --network rinkeby`
+- To deploy a contract, configure a migration in the [migration folder](migrations). Look at the way the TD is deploy and try to iterate
+- Test your deployment in Ganache `truffle migrate`
+- Deploy on Rinkeby `truffle migrate --network rinkeby --skip-dry-run`
+
 
 ## Points list
 ### Setting up
@@ -58,7 +73,5 @@ Extra points if you find bugs / corrections this TD can benefit from, and submit
 - Evaluator `0xDeFa0002557f9860678eFe1d92151B81342b10F3`
 
 ## Installing
-> npm install @openzeppelin/contracts@3.4.1
 
-> npm install @truffle/hdwallet-provider
 
