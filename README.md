@@ -21,9 +21,9 @@ Your objective is to gather as many TD-ERC20-101 points as possible. Please note
 ### Getting to work
 - Clone the repo on your machine
 - Install the required packages `npm install truffle`, `npm install @openzeppelin/contracts@3.4.1` , `npm install @truffle/hdwallet-provider`
-- Copy the content of `example-truffle-config.js` to your truffle config
-- Configure a seed for deployment of contracts in your truffle config
-- Register for an infura key and set it up in your truffle config
+- Renam `example-truffle-config.js` to `truffle-config.js` . That is now your truffle config file.
+- Configure a seed for deployment of contracts in your truffle config file
+- Register for an infura key and set it up in your truffle config file
 - Download and launch Ganache
 - Test that you are able to connect to the rinkeby network with `truffle console`
 - Test that you are able to connect to the rinkeby network with `truffle console --network rinkeby`
