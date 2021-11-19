@@ -49,6 +49,8 @@ These points will be attributed manually if you do not manage to have your contr
 ### Extra points
 Extra points if you find bugs / corrections this TD can benefit from, and submit a PR to make it better.  
 
+## TD addresses
+
 
 ## Installing
 > npm install 

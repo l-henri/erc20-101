@@ -19,6 +19,7 @@ contract Evaluator
  	mapping(address => mapping(uint256 => bool)) public exerciceProgression;
  	mapping(address => IExerciceSolution) public studentErc20;
  	mapping(address => uint256) public ex8Tier1AmountBought;
+ 	mapping(address => bool) public hasBeenPaired;
 
  	event newRandomTickerAndSupply(string ticker, uint256 supply);
  	event constructedCorrectly(address erc20Address);
@@ -76,8 +77,12 @@ contract Evaluator
 		// Checking ticker and supply were received
 		require(exerciceProgression[msg.sender][1]);
 
+		// Checking this contract was not used by another group before
+		require(!hasBeenPaired[address(erc20ToTest)]);
+
 		// Assigning passed ERC20 as student ERC20
 		studentErc20[msg.sender] = erc20ToTest;
+		hasBeenPaired[address(erc20ToTest)] = true;
 
 		// Checking ticker was set properly
 		require(_compareStrings(assignedTicker[msg.sender], erc20ToTest.symbol()), "Incorrect ticker");
