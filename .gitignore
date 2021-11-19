@@ -1,3 +1,4 @@
 truffle-config.js
 node_modules
 build
+*2_td_test.js*
