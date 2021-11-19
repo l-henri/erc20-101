@@ -37,18 +37,6 @@ contract Evaluator
 	receive () external payable 
 	{}
 
-	function setRandomTickersAndSupply(uint256[20] memory _randomSupplies, string[20] memory _randomTickers) 
-	public 
-	onlyTeachers
-	{
-		randomSupplies = _randomSupplies;
-		randomTickers = _randomTickers;
-		nextValueStoreRank = 0;
-		for (uint i = 0; i < 20; i++)
-		{
-			emit newRandomTickerAndSupply(randomTickers[i], randomSupplies[i]);
-		}
-	}
 
 	function ex1_getTickerAndSupply()
 	public
@@ -77,12 +65,8 @@ contract Evaluator
 		// Checking ticker and supply were received
 		require(exerciceProgression[msg.sender][1]);
 
-		// Checking this contract was not used by another group before
-		require(!hasBeenPaired[address(erc20ToTest)]);
-
-		// Assigning passed ERC20 as student ERC20
-		studentErc20[msg.sender] = erc20ToTest;
-		hasBeenPaired[address(erc20ToTest)] = true;
+		// Checking exercice was submitted
+		require(exerciceProgression[msg.sender][0]);
 
 		// Checking ticker was set properly
 		require(_compareStrings(assignedTicker[msg.sender], erc20ToTest.symbol()), "Incorrect ticker");
@@ -97,11 +81,7 @@ contract Evaluator
 		if (!exerciceProgression[msg.sender][2])
 		{
 			exerciceProgression[msg.sender][2] = true;
-			// Setup points
-			TDERC20.distributeTokens(msg.sender, 3);
 			// Creating ERC20
-			TDERC20.distributeTokens(msg.sender, 2);
-			// Deploying ERC20
 			TDERC20.distributeTokens(msg.sender, 2);
 		}
 
@@ -294,6 +274,28 @@ contract Evaluator
 	    _;
 	}
 
+	function submitExercice(IExerciceSolution studentExercice)
+	public
+	{
+		// Checking this contract was not used by another group before
+		require(!hasBeenPaired[address(studentExercice)]);
+
+		// Assigning passed ERC20 as student ERC20
+		studentErc20[msg.sender] = studentExercice;
+		hasBeenPaired[address(studentExercice)] = true;
+		if (!exerciceProgression[msg.sender][0])
+		{
+			exerciceProgression[msg.sender][0] = true;
+			// Setup points
+			TDERC20.distributeTokens(msg.sender, 2);
+			// Creating contract points
+			TDERC20.distributeTokens(msg.sender, 2);
+			// Deploying contract points
+			TDERC20.distributeTokens(msg.sender, 1);
+		}
+			
+	}
+
 	function _compareStrings(string memory a, string memory b) 
 	internal 
 	pure 
@@ -367,6 +369,20 @@ contract Evaluator
 	{
 		return assignedSupply[studentAddres];
 	}
+
+	function setRandomTickersAndSupply(uint256[20] memory _randomSupplies, string[20] memory _randomTickers) 
+	public 
+	onlyTeachers
+	{
+		randomSupplies = _randomSupplies;
+		randomTickers = _randomTickers;
+		nextValueStoreRank = 0;
+		for (uint i = 0; i < 20; i++)
+		{
+			emit newRandomTickerAndSupply(randomTickers[i], randomSupplies[i]);
+		}
+	}
+
 
 
 
