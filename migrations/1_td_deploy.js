@@ -1,4 +1,5 @@
 const Str = require('@supercharge/strings')
+// const BigNumber = require('bignumber.js');
 
 var TDErc20 = artifacts.require("ERC20TD.sol");
 var evaluator = artifacts.require("Evaluator.sol");
@@ -9,6 +10,7 @@ module.exports = (deployer, network, accounts) => {
         await deployTDToken(deployer, network, accounts); 
         await deployEvaluator(deployer, network, accounts); 
         await setPermissionsAndRandomValues(deployer, network, accounts); 
+        await deployRecap(deployer, network, accounts); 
     });
 };
 
@@ -26,10 +28,22 @@ async function setPermissionsAndRandomValues(deployer, network, accounts) {
 	randomTickers = []
 	for (i = 0; i < 20; i++)
 		{
-		randomSupplies.push(web3.utils.toBN(Math.floor(Math.random())*12))
+		randomSupplies.push(Math.floor(Math.random()*1000000000))
 		randomTickers.push(Str.random(5))
+		// randomTickers.push(web3.utils.utf8ToBytes(Str.random(5)))
+		// randomTickers.push(Str.random(5))
 		}
-	// console.log(randomTickers)
-	// console.log(randomSupplies)
+
+	console.log(randomTickers)
+	console.log(randomSupplies)
+	// console.log(web3.utils)
+	// console.log(type(Str.random(5)0)
 	await Evaluator.setRandomTickersAndSupply(randomSupplies, randomTickers);
 }
+
+async function deployRecap(deployer, network, accounts) {
+	console.log("TDToken " + TDToken.address)
+	console.log("Evaluator " + Evaluator.address)
+}
+
+

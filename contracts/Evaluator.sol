@@ -20,10 +20,14 @@ contract Evaluator
  	mapping(address => IExerciceSolution) public studentErc20;
  	mapping(address => uint256) public ex8Tier1AmountBought;
 
+ 	event newRandomTickerAndSupply(string ticker, uint256 supply);
+ 	event constructedCorrectly(address erc20Address);
 	constructor(ERC20TD _TDERC20) 
 	public 
 	{
 		TDERC20 = _TDERC20;
+		emit constructedCorrectly(address(TDERC20));
+
 	}
 
 	fallback () external payable 
@@ -39,12 +43,17 @@ contract Evaluator
 		randomSupplies = _randomSupplies;
 		randomTickers = _randomTickers;
 		nextValueStoreRank = 0;
+		for (uint i = 0; i < 20; i++)
+		{
+			emit newRandomTickerAndSupply(randomTickers[i], randomSupplies[i]);
+		}
 	}
 
 	function ex1_getTickerAndSupply()
 	public
 	{
-		assignedSupply[msg.sender] = randomSupplies[nextValueStoreRank];
+		assignedSupply[msg.sender] = randomSupplies[nextValueStoreRank]*1000000000000000000;
+		// assignedTicker[msg.sender] = bytes32ToString(randomTickers[nextValueStoreRank]);
 		assignedTicker[msg.sender] = randomTickers[nextValueStoreRank];
 		nextValueStoreRank += 1;
 
@@ -283,6 +292,21 @@ contract Evaluator
     	return (keccak256(abi.encodePacked((a))) == keccak256(abi.encodePacked((b))));
 	}
 
+	function bytes32ToString(bytes32 _bytes32) 
+	public 
+	pure returns (string memory) 
+	{
+        uint8 i = 0;
+        while(i < 32 && _bytes32[i] != 0) {
+            i++;
+        }
+        bytes memory bytesArray = new bytes(i);
+        for (i = 0; i < 32 && _bytes32[i] != 0; i++) {
+            bytesArray[i] = _bytes32[i];
+        }
+        return string(bytesArray);
+    }
+
 	function _testBuyToken()
 	internal
 	returns(uint256 firstBuyAmount)
@@ -316,6 +340,22 @@ contract Evaluator
 		// Check that second buy amount was a different amount that first buy amount
 
 		require(secondBuyAmount > firstBuyAmount, "Second buy amount lower than first");
+	}
+
+	function readTicker(address studentAddres)
+	public
+	view
+	returns(string memory)
+	{
+		return assignedTicker[studentAddres];
+	}
+
+	function readSupply(address studentAddres)
+	public
+	view
+	returns(uint256)
+	{
+		return assignedSupply[studentAddres];
 	}
 
 
