@@ -23,7 +23,7 @@ Your objective is to gather as many TD02 points as possible. Please note :
 These points will be attributed manually if you do not manage to have your contract interact with the evaluator, or automatically in the first question.
 
 ### ERC20 basics
-- Call  `ex1_getTickerAndSupply()` in the evaluator contract to receive a random ticker for your ERC20 token, as well as an initial token supply (1 pt)
+- Call  `ex1_getTickerAndSupply()` in the evaluator contract to receive a random ticker for your ERC20 token, as well as an initial token supply (1 pt). You can read your assigned ticker and supply in `Evaluator.sol` by calling getters `readTicker()` and `readSupply()`
 - Create an ERC20 token contract with the proper ticker and supply (2 pt)
 - Deploy it to the Rinkeby testnet (2 pts)
 - Call `ex2_testErc20TickerAndSupply()` in the evaluator to receive your points (all remaining 7 points are attributed at that step)
@@ -47,10 +47,12 @@ These points will be attributed manually if you do not manage to have your contr
 - Call `ex9_testTier2Listing()` in the evaluator to show he can now buy more tokens(2 pt)
 
 ### Extra points
-Extra points if you find bugs / corrections this TD can benefit from, and submit a PR to make it better.  
+Extra points if you find bugs / corrections this TD can benefit from, and submit a PR to make it better.  Ideas:
+- Adding a way to check the code of a specific contract was only used once (no copying) 
 
 ## TD addresses
-
+- Points contracts `0xD4Ca8C8E2F4b144C3649CC00b1dE959Da8c96e11`
+- Evaluator `0x472CC721399F9939eC1628Ce389C423408Abec5F`
 
 ## Installing
 > npm install 
