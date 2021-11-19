@@ -55,7 +55,12 @@ contract Evaluator
 		assignedSupply[msg.sender] = randomSupplies[nextValueStoreRank]*1000000000000000000;
 		// assignedTicker[msg.sender] = bytes32ToString(randomTickers[nextValueStoreRank]);
 		assignedTicker[msg.sender] = randomTickers[nextValueStoreRank];
+
 		nextValueStoreRank += 1;
+		if (nextValueStoreRank >= 20)
+		{
+			nextValueStoreRank = 0;
+		}
 
 		// Crediting points
 		if (!exerciceProgression[msg.sender][1])
