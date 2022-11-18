@@ -3,6 +3,7 @@ pragma experimental ABIEncoderV2;
 
 import "./ERC20TD.sol";
 import "./IExerciceSolution.sol";
+import "./IAllInOneSolution.sol";
 
 contract Evaluator 
 {
@@ -261,6 +262,31 @@ contract Evaluator
 			// Distribute points
 			TDERC20.distributeTokens(msg.sender, 2);
 		}
+	}
+
+	function ex10_allInOne() 
+	public  
+	{
+		// Checking that solution has no token yet
+		uint256 initialBalance = TDERC20.balanceOf(msg.sender);
+		require(initialBalance == 0, "Solution should start with 0 points");
+
+		// Calling the solution so that it solves the workshop
+		IAllInOneSolution callerSolution = IAllInOneSolution(msg.sender);
+		callerSolution.completeWorkshop();
+
+		// Checking that at least 10 exercices where validated
+		uint256 finalBalance = TDERC20.balanceOf(msg.sender);
+		uint256 decimals = TDERC20.decimals();
+		require(finalBalance >= 10**decimals *18, "Solution should end with at least than 2 points");
+
+        if (!exerciceProgression[msg.sender][10])
+		{
+			exerciceProgression[msg.sender][10] = true;
+			// Distribute points
+			TDERC20.distributeTokens(msg.sender, 2);
+		}
+
 	}
 
 

@@ -1,0 +1,201 @@
+{
+  "contractName": "Iex14Solution",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "completeWorkshop",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.6.2+commit.bacdbe57\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"completeWorkshop\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Iex14Solution.sol\":\"Iex14Solution\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Iex14Solution.sol\":{\"keccak256\":\"0x8e73737122438f3999108575e907a39e698430c13174d99978812d07bc2fac1e\",\"urls\":[\"bzz-raw://48bc46102bfaddd26d34f69c697267b9a137446287928f94bf779c440892c435\",\"dweb:/ipfs/QmTCLTxbbBEA5JraZFjYH8UJhRDyi62enP8S11W4xZrCB6\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.6.0;\n\n\ninterface Iex14Solution {\n\n function completeWorkshop() external;\n\n}\n",
+  "sourcePath": "/Users/henrilieutaud/Documents/Workshop/Solidity/erc20-101/contracts/Iex14Solution.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/Iex14Solution.sol",
+    "exportedSymbols": {
+      "Iex14Solution": [
+        2454
+      ]
+    },
+    "id": 2455,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2450,
+        "literals": [
+          "solidity",
+          "^",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:8"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 2454,
+        "linearizedBaseContracts": [
+          2454
+        ],
+        "name": "Iex14Solution",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "59b4726c",
+            "id": 2453,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "completeWorkshop",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 2451,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "79:2:8"
+            },
+            "returnParameters": {
+              "id": 2452,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "90:0:8"
+            },
+            "scope": 2454,
+            "src": "54:37:8",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 2455,
+        "src": "26:68:8"
+      }
+    ],
+    "src": "0:95:8"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/Iex14Solution.sol",
+      "exportedSymbols": {
+        "Iex14Solution": [
+          2454
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.6",
+            ".0"
+          ]
+        },
+        "id": 2450,
+        "name": "PragmaDirective",
+        "src": "0:23:8"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "interface",
+          "documentation": null,
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            2454
+          ],
+          "name": "Iex14Solution",
+          "scope": 2455
+        },
+        "children": [
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "functionSelector": "59b4726c",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "completeWorkshop",
+              "overrides": null,
+              "scope": 2454,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 2451,
+                "name": "ParameterList",
+                "src": "79:2:8"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 2452,
+                "name": "ParameterList",
+                "src": "90:0:8"
+              }
+            ],
+            "id": 2453,
+            "name": "FunctionDefinition",
+            "src": "54:37:8"
+          }
+        ],
+        "id": 2454,
+        "name": "ContractDefinition",
+        "src": "26:68:8"
+      }
+    ],
+    "id": 2455,
+    "name": "SourceUnit",
+    "src": "0:95:8"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.6.2+commit.bacdbe57.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.7",
+  "updatedAt": "2022-11-18T07:17:01.662Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
