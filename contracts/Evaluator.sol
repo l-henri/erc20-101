@@ -1,4 +1,4 @@
-pragma solidity ^0.6.0;
+pragma solidity ^0.8.0;
 pragma experimental ABIEncoderV2;
 
 import "./ERC20TD.sol";
@@ -190,7 +190,7 @@ contract Evaluator
 		require(studentErc20[msg.sender].customerTierLevel(address(this)) == 0);
 
 		bool wasBuyAccepted = true;
-		try studentErc20[msg.sender].buyToken.value(0.0001 ether)() returns (bool v) 
+		try studentErc20[msg.sender].buyToken{value: 0.0001 ether}() returns (bool v) 
 		{
 			wasBuyAccepted = v;
         } 
@@ -339,7 +339,7 @@ contract Evaluator
             i++;
         }
         bytes memory bytesArray = new bytes(i);
-        for (i = 0; i < 32 && _bytes32[i] != 0; i++) {
+        for (i0.8.0 = 0; i < 32 && _bytes32[i] != 0; i++) {
             bytesArray[i] = _bytes32[i];
         }
         return string(bytesArray);
@@ -356,7 +356,7 @@ contract Evaluator
 		uint256 initialBalance = studentErc20[msg.sender].balanceOf(address(this));
 
 		// Call buyToken
-		studentErc20[msg.sender].buyToken.value(0.0001 ether)();
+		studentErc20[msg.sender].buyToken{value: 0.0001 ether}();
 
 		// Retrieving intermediate balance
 		uint256 intermediateBalance = studentErc20[msg.sender].balanceOf(address(this));
@@ -366,7 +366,7 @@ contract Evaluator
 		firstBuyAmount = intermediateBalance - initialBalance;
 
 		// Call buyToken again
-		studentErc20[msg.sender].buyToken.value(0.0003 ether)();
+		studentErc20[msg.sender].buyToken{value: 0.0003 ether}();
 
 		// Retrieving final balance
 		uint256 finalBalance = studentErc20[msg.sender].balanceOf(address(this));
