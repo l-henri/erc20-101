@@ -20,7 +20,7 @@ Your objective is to gather as many TD-ERC20-101 points as possible. Please note
 
 ### Getting to work
 - Clone the repo on your machine
-- Install the required packages `npm -i`
+- Install the required packages `npm i`
 - Register for an infura API key 
 - Register for an etherscan API key 
 - Create a `.env` file that contains a mnemonic phrase for deployment, an infura API key and an Etherscan API key. 
