@@ -1,4 +1,5 @@
-pragma solidity ^0.6.0;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.9;
 pragma experimental ABIEncoderV2;
 
 import "./ERC20TD.sol";
@@ -9,7 +10,7 @@ contract Evaluator
 {
 
 	mapping(address => bool) public teachers;
-	ERC20TD TDERC20;
+	ERC20TD erc20tdAddress;
 
 	uint256[20] private randomSupplies;
 	string[20] private randomTickers;
@@ -24,11 +25,10 @@ contract Evaluator
 
  	event newRandomTickerAndSupply(string ticker, uint256 supply);
  	event constructedCorrectly(address erc20Address);
-	constructor(ERC20TD _TDERC20) 
-	public 
+	constructor(ERC20TD _erc20tdAddress)  
 	{
-		TDERC20 = _TDERC20;
-		emit constructedCorrectly(address(TDERC20));
+		erc20tdAddress = _erc20tdAddress;
+		emit constructedCorrectly(address(erc20tdAddress));
 
 	}
 
@@ -56,7 +56,7 @@ contract Evaluator
 		if (!exerciceProgression[msg.sender][1])
 		{
 			exerciceProgression[msg.sender][1] = true;
-			TDERC20.distributeTokens(msg.sender, 1);
+			erc20tdAddress.distributeTokens(msg.sender, 1);
 		}
 	}
 
@@ -83,7 +83,7 @@ contract Evaluator
 		{
 			exerciceProgression[msg.sender][2] = true;
 			// Creating ERC20
-			TDERC20.distributeTokens(msg.sender, 2);
+			erc20tdAddress.distributeTokens(msg.sender, 2);
 		}
 
 	}
@@ -109,7 +109,7 @@ contract Evaluator
 		{
 			exerciceProgression[msg.sender][3] = true;
 			// Distribute points
-			TDERC20.distributeTokens(msg.sender, 2);
+			erc20tdAddress.distributeTokens(msg.sender, 2);
 
 		}
 	}
@@ -124,7 +124,7 @@ contract Evaluator
 		{
 			exerciceProgression[msg.sender][4] = true;
 			// Distribute points
-			TDERC20.distributeTokens(msg.sender, 2);
+			erc20tdAddress.distributeTokens(msg.sender, 2);
 		}
 	}
 
@@ -153,7 +153,7 @@ contract Evaluator
 		{
 			exerciceProgression[msg.sender][5] = true;
 			// Distribute points
-			TDERC20.distributeTokens(msg.sender, 1);
+			erc20tdAddress.distributeTokens(msg.sender, 1);
 		}
 	}
 
@@ -175,7 +175,7 @@ contract Evaluator
 		{
 			exerciceProgression[msg.sender][6] = true;
 			// Distribute points
-			TDERC20.distributeTokens(msg.sender, 2);
+			erc20tdAddress.distributeTokens(msg.sender, 2);
 		}
 	}
 
@@ -190,7 +190,7 @@ contract Evaluator
 		require(studentErc20[msg.sender].customerTierLevel(address(this)) == 0);
 
 		bool wasBuyAccepted = true;
-		try studentErc20[msg.sender].buyToken.value(0.0001 ether)() returns (bool v) 
+		try studentErc20[msg.sender].buyToken{value: 0.0001 ether}() returns (bool v) 
 		{
 			wasBuyAccepted = v;
         } 
@@ -206,7 +206,7 @@ contract Evaluator
 		{
 			exerciceProgression[msg.sender][7] = true;
 			// Distribute points
-			TDERC20.distributeTokens(msg.sender, 1);
+			erc20tdAddress.distributeTokens(msg.sender, 1);
 		}
 	}
 
@@ -231,7 +231,7 @@ contract Evaluator
 		{
 			exerciceProgression[msg.sender][8] = true;
 			// Distribute points
-			TDERC20.distributeTokens(msg.sender, 2);
+			erc20tdAddress.distributeTokens(msg.sender, 2);
 		}
 	}
 
@@ -260,7 +260,7 @@ contract Evaluator
 		{
 			exerciceProgression[msg.sender][9] = true;
 			// Distribute points
-			TDERC20.distributeTokens(msg.sender, 2);
+			erc20tdAddress.distributeTokens(msg.sender, 2);
 		}
 	}
 
@@ -268,7 +268,7 @@ contract Evaluator
 	public  
 	{
 		// Checking that solution has no token yet
-		uint256 initialBalance = TDERC20.balanceOf(msg.sender);
+		uint256 initialBalance = erc20tdAddress.balanceOf(msg.sender);
 		require(initialBalance == 0, "Solution should start with 0 points");
 
 		// Calling the solution so that it solves the workshop
@@ -276,15 +276,15 @@ contract Evaluator
 		callerSolution.completeWorkshop();
 
 		// Checking that at least 10 exercices where validated
-		uint256 finalBalance = TDERC20.balanceOf(msg.sender);
-		uint256 decimals = TDERC20.decimals();
+		uint256 finalBalance = erc20tdAddress.balanceOf(msg.sender);
+		uint256 decimals = erc20tdAddress.decimals();
 		require(finalBalance >= 10**decimals *18, "Solution should end with at least than 2 points");
 
         if (!exerciceProgression[msg.sender][10])
 		{
 			exerciceProgression[msg.sender][10] = true;
 			// Distribute points
-			TDERC20.distributeTokens(msg.sender, 2);
+			erc20tdAddress.distributeTokens(msg.sender, 2);
 		}
 
 	}
@@ -296,7 +296,7 @@ contract Evaluator
 	modifier onlyTeachers() 
 	{
 
-	    require(TDERC20.teachers(msg.sender));
+	    require(erc20tdAddress.teachers(msg.sender));
 	    _;
 	}
 
@@ -313,11 +313,11 @@ contract Evaluator
 		{
 			exerciceProgression[msg.sender][0] = true;
 			// Setup points
-			TDERC20.distributeTokens(msg.sender, 2);
+			erc20tdAddress.distributeTokens(msg.sender, 2);
 			// Creating contract points
-			TDERC20.distributeTokens(msg.sender, 2);
+			erc20tdAddress.distributeTokens(msg.sender, 2);
 			// Deploying contract points
-			TDERC20.distributeTokens(msg.sender, 1);
+			erc20tdAddress.distributeTokens(msg.sender, 1);
 		}
 			
 	}
@@ -356,7 +356,7 @@ contract Evaluator
 		uint256 initialBalance = studentErc20[msg.sender].balanceOf(address(this));
 
 		// Call buyToken
-		studentErc20[msg.sender].buyToken.value(0.0001 ether)();
+		studentErc20[msg.sender].buyToken{value: 0.0001 ether}();
 
 		// Retrieving intermediate balance
 		uint256 intermediateBalance = studentErc20[msg.sender].balanceOf(address(this));
@@ -366,7 +366,7 @@ contract Evaluator
 		firstBuyAmount = intermediateBalance - initialBalance;
 
 		// Call buyToken again
-		studentErc20[msg.sender].buyToken.value(0.0003 ether)();
+		studentErc20[msg.sender].buyToken{value: 0.0003 ether}();
 
 		// Retrieving final balance
 		uint256 finalBalance = studentErc20[msg.sender].balanceOf(address(this));
