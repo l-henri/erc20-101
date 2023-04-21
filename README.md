@@ -33,7 +33,7 @@ Your objective is to gather as many TD-ERC20-101 points as possible. Please note
 ## Points list
 ### Setting up
 - Create a git repository and share it with the teacher
-- Install truffle and create an empty truffle project (2 pts). Create an infura API key to be able to deploy to the Sepolia testnet
+- Install Hardhat and create an empty hardhat project (2 pts). Create an infura API key to be able to deploy to the Sepolia testnet
 These points will be attributed manually if you do not manage to have your contract interact with the evaluator, or automatically in the first question.
 
 ### ERC20 basics
