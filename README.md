@@ -20,28 +20,26 @@ Your objective is to gather as many TD-ERC20-101 points as possible. Please note
 
 ### Getting to work
 - Clone the repo on your machine
-- Install the required packages `npm install truffle`, `npm install @openzeppelin/contracts@3.4.1` , `npm install @truffle/hdwallet-provider`
-- Renam `example-truffle-config.js` to `truffle-config.js` . That is now your truffle config file.
-- Configure a seed for deployment of contracts in your truffle config file
-- Register for an infura key and set it up in your truffle config file
-- Download and launch Ganache
-- Test that you are able to connect to the goerli network with `truffle console`
-- Test that you are able to connect to the goerli network with `truffle console --network goerli`
-- To deploy a contract, configure a migration in the [migration folder](migrations). Look at the way the TD is deploy and try to iterate
-- Test your deployment in Ganache `truffle migrate`
-- Deploy on goerli `truffle migrate --network goerli --skip-dry-run`
+- Install the required packages `npm -i`
+- Register for an infura API key 
+- Register for an etherscan API key 
+- Create a `.env` file that contains a mnemonic phrase for deployment, an infura API key and an Etherscan API key. 
+- Test that you are able to connect to the Sepolia network with `npx hardhat console --network sepolia`
+- To deploy a contract, configure a script in the [scripts folder](scripts). Look at the way the TD is deployed and try to iterate
+- Test your deployment locallly with `npx hardhat run scripts/your-script.js`
+- Deploy on Sepolia `npx hardhat run scripts/your-script.js --network sepolia`
 
 
 ## Points list
 ### Setting up
 - Create a git repository and share it with the teacher
-- Install truffle and create an empty truffle project (2 pts). Create an infura API key to be able to deploy to the goerli testnet
+- Install truffle and create an empty truffle project (2 pts). Create an infura API key to be able to deploy to the Sepolia testnet
 These points will be attributed manually if you do not manage to have your contract interact with the evaluator, or automatically in the first question.
 
 ### ERC20 basics
 - Call  `ex1_getTickerAndSupply()` in the evaluator contract to receive a random ticker for your ERC20 token, as well as an initial token supply (1 pt). You can read your assigned ticker and supply in `Evaluator.sol` by calling getters `readTicker()` and `readSupply()`
 - Create an ERC20 token contract with the proper ticker and supply (2 pt)
-- Deploy it to the goerli testnet (1 pts)
+- Deploy it to the Sepolia testnet (1 pts)
 - Call `submitExercice()` in the Evaluator to configure the contract you want evaluated (Previous 5 points are attributed at that step)
 - Call `ex2_testErc20TickerAndSupply()` in the evaluator to receive your points (2 pts) 
 
@@ -71,8 +69,8 @@ Extra points if you find bugs / corrections this TD can benefit from, and submit
 - Adding a way to check the code of a specific contract was only used once (no copying) 
 
 ## TD addresses
-- Points contracts `0x09f14a40Fd672B5B056FF8b5c343498452CAC4b2`
-- Evaluator `0x7C5629d850eCD1E640b1572bC0d4ac5210b38FA5`
+- ERC20TD [`0x114452017Cdd009005C3b7eda7F0ef68aE2012bf`](https://sepolia.etherscan.io/address/0x114452017cdd009005c3b7eda7f0ef68ae2012bf)
+- Evaluator [`0x871676618E2B0db54eeD3c1398d044304B94E168`](https://sepolia.etherscan.io/address/0x871676618e2b0db54eed3c1398d044304b94e168)
 
 
 

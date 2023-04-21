@@ -7,13 +7,13 @@ module.exports = {
     hardhat: {
     },
     goerli: {
-      url: "https://goerli.infura.io/v3/2cce1f049fc04dac8240247dfbcbeff3",
+      url: "https://goerli.infura.io/v3/" + process.env.infura,
       accounts: {
         mnemonic: process.env.mnemonic
       }
     },
     sepolia: {
-      url: "https://sepolia.infura.io/v3/2cce1f049fc04dac8240247dfbcbeff3",
+      url: "https://sepolia.infura.io/v3/" + process.env.infura,
       accounts: {
         mnemonic: process.env.mnemonic
       }
